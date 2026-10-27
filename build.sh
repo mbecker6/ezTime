@@ -14,8 +14,9 @@ done
 
 APP=build/ezTime.app
 rm -rf build
-mkdir -p "$APP/Contents/MacOS"
+mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 lipo -create -output "$APP/Contents/MacOS/ezTime" "${BINARIES[@]}"
+cp Resources/AppIcon.icns "$APP/Contents/Resources/"
 
 cat > "$APP/Contents/Info.plist" <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
@@ -28,6 +29,8 @@ cat > "$APP/Contents/Info.plist" <<EOF
     <string>ezTime</string>
     <key>CFBundleExecutable</key>
     <string>ezTime</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
